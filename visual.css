@@ -47,3 +47,5 @@
 .manualPortal #detail[data-brand] .detailIdentity>.code{background:var(--brand-soft);color:var(--brand-accent);border:1px solid var(--brand-border)}
 .manualPortal #detail[data-brand] .detailTags span{background:var(--brand-soft);color:var(--ink)}
 .manualPortal .entryProduct .entryCopy{background:#F8F5F7}.manualPortal .entryPop .entryCopy{background:#F5F4F8}
+
+.criteriaMatchStatus{margin:18px 0;padding:14px 16px;border:1px solid #DBE4DC;background:#F4F8F4;border-radius:7px;color:#354D3D}.criteriaMatchStatus b{font-size:14px}.criteriaMatchStatus p{font-size:13px;line-height:1.7;margin:7px 0 0}.criteriaMatchStatus.pendingCode{background:#FBF7EE;border-color:#E7DDC6;color:#6A5737}.criteriaRow span{white-space:pre-line;overflow-wrap:break-word}.criteriaSourceLink{display:inline-block;font-size:13px;color:var(--pink);margin-top:16px;text-decoration:underline}
