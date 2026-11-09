@@ -28,13 +28,13 @@ function troquelActions(p) {
   const filenames = files.map(file => file.name).filter(Boolean).join(', ');
   const subject = encodeURIComponent('Solicitud de acceso a troquel · ' + prop);
   const body = encodeURIComponent(
-    'Hola, Lorena.\n\nSolicito acceso al troquel de ' + prop + '.' +
+    'Hola, LiliPrint.\n\nSolicito acceso al troquel de ' + prop + '.' +
     (filenames ? '\nArchivo: ' + filenames : '') +
     '\n\nCorreo registrado del proveedor: \nEmpresa: \n\nGracias.'
   );
   const requestUrl = 'mailto:lorena.espejo@fastmoda.com.co?subject=' + subject + '&body=' + body;
 
-  return '<p class="muted">Envía la solicitud desde tu correo registrado. Si Lorena Espejo la aprueba, recibirás por correo el enlace al archivo y podrás abrirlo con la cuenta autorizada.</p>' +
+  return '<p class="muted">Envía la solicitud desde tu correo registrado. Si LiliPrint aprueba la solicitud, recibirás por correo el enlace al archivo y podrás abrirlo con la cuenta autorizada.</p>' +
     '<div class="fileActions"><a class="primary" href="' + esc(requestUrl) +
     '">Solicitud de acceso</a></div>';
 }
