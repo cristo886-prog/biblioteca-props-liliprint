@@ -25,19 +25,18 @@ function troquelActions(p) {
   }
 
   const prop = [p.code, p.name].filter(Boolean).join(' · ');
+  const filenames = files.map(file => file.name).filter(Boolean).join(', ');
   const subject = encodeURIComponent('Solicitud de acceso a troquel · ' + prop);
   const body = encodeURIComponent(
-    'Hola, Lorena.\n\nSolicito acceso al troquel de ' + prop +
-    '.\n\nCorreo registrado del proveedor: \nEmpresa: \n\nGracias.'
+    'Hola, Lorena.\n\nSolicito acceso al troquel de ' + prop + '.' +
+    (filenames ? '\nArchivo: ' + filenames : '') +
+    '\n\nCorreo registrado del proveedor: \nEmpresa: \n\nGracias.'
   );
   const requestUrl = 'mailto:lorena.espejo@fastmoda.com.co?subject=' + subject + '&body=' + body;
-  const openLinks = files.map(file =>
-    '<a class="primary" href="' + esc(file.url) + '" target="_blank" rel="noopener noreferrer">Abrir troquel en Drive ↗</a>'
-  ).join('');
 
-  return '<p class="muted">Solicita acceso a Lorena Espejo desde el correo que registraste. Cuando ella te autorice, abre el archivo en Drive con ese mismo correo.</p>' +
+  return '<p class="muted">Envía la solicitud desde tu correo registrado. Si Lorena Espejo la aprueba, recibirás por correo el enlace al archivo y podrás abrirlo con la cuenta autorizada.</p>' +
     '<div class="fileActions"><a class="primary" href="' + esc(requestUrl) +
-    '">Solicitar acceso a Lorena</a>' + openLinks + '</div>';
+    '">Solicitar acceso a Lorena</a></div>';
 }
 
 function attachments(p) {
@@ -117,7 +116,7 @@ $('#print').onclick=()=>{const previous=tab;$('#detailBody').querySelector('.det
 $$('[data-mode]').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));
 $$('[data-role]').forEach(b=>b.onclick=()=>{if(b.dataset.role==='gestion'){location.hash='solicitudes';return}setMode(b.dataset.role);location.hash='catalogo'});
 ['search','brand','material'].forEach(id=>$('#'+id).addEventListener(id==='search'?'input':'change',render));
-Promise.all([fetch('catalog-source.json?v=20261109-troqueles',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('catalog');return r.json()}),fetch('media-map.json?v=20261109-troqueles',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('media');return r.json()})]).then(([d,m])=>{mediaIndex=m;data=d;props=d.tabs[0].values.slice(1).map((r,i)=>{const c=r.map(clean);return {id:i+1,row:i+2,material:c[0]||'',caliber:c[1]||'',qr:c[2]||'',code:c[3]||'',name:c[4]||'',image:c[5]||'',brand:c[6]||'',measure:c[7]||'',pop:c[8]||'',implementation:c[9]||'',request:c[10]||'',reason:c[11]||'',die:c[12]||'',use:c[13]||'',cost:c[14]||'',life:c[15]||'',care:c[16]||'',storage:c[17]||''}}).filter(p=>p.name);
+Promise.all([fetch('catalog-source.json?v=20261109-troqueles',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('catalog');return r.json()}),fetch('media-map.json?v=20261109-troqueles-solicitud',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('media');return r.json()})]).then(([d,m])=>{mediaIndex=m;data=d;props=d.tabs[0].values.slice(1).map((r,i)=>{const c=r.map(clean);return {id:i+1,row:i+2,material:c[0]||'',caliber:c[1]||'',qr:c[2]||'',code:c[3]||'',name:c[4]||'',image:c[5]||'',brand:c[6]||'',measure:c[7]||'',pop:c[8]||'',implementation:c[9]||'',request:c[10]||'',reason:c[11]||'',die:c[12]||'',use:c[13]||'',cost:c[14]||'',life:c[15]||'',care:c[16]||'',storage:c[17]||''}}).filter(p=>p.name);
 $('#total').textContent=props.length;
 for(const [id,key]of [['brand','brand'],['material','material']])$('#'+id).innerHTML+=[...new Set(props.map(p=>p[key]).filter(Boolean))].sort().map(v=>'<option value="'+esc(v)+'">'+esc(v)+'</option>').join('');
 manualRoute();window.addEventListener('hashchange',manualRoute)}).catch(()=>{$('#cards').innerHTML='<div class="empty">No pudimos cargar el catálogo. Recarga la página o consulta el <a href="'+source+'">manual fuente ↗</a>.</div>';$('#count').textContent='Catálogo temporalmente no disponible'});
