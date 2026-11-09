@@ -36,7 +36,7 @@ function troquelActions(p) {
 
   return '<p class="muted">Envía la solicitud desde tu correo registrado. Si Lorena Espejo la aprueba, recibirás por correo el enlace al archivo y podrás abrirlo con la cuenta autorizada.</p>' +
     '<div class="fileActions"><a class="primary" href="' + esc(requestUrl) +
-    '">Solicitar acceso a Lorena</a></div>';
+    '">Solicitud de acceso</a></div>';
 }
 
 function attachments(p) {
