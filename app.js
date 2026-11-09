@@ -23,11 +23,23 @@ function troquelActions(p) {
   if (!files.length) {
     return '<p class="muted">' + esc(p.die || 'Archivo de fabricación pendiente de documentar') + '</p>';
   }
-  return '<p class="muted">Acceso para proveedores autorizados. Ingresa con el correo al que se otorgó permiso.</p>' +
-    '<div class="fileActions">' + files.map(file =>
-      '<a class="primary" href="' + esc(file.url) + '" target="_blank" rel="noopener noreferrer">Abrir troquel en Drive ↗</a>'
-    ).join('') + '</div>';
+
+  const prop = [p.code, p.name].filter(Boolean).join(' · ');
+  const subject = encodeURIComponent('Solicitud de acceso a troquel · ' + prop);
+  const body = encodeURIComponent(
+    'Hola, Lorena.\n\nSolicito acceso al troquel de ' + prop +
+    '.\n\nCorreo registrado del proveedor: \nEmpresa: \n\nGracias.'
+  );
+  const requestUrl = 'mailto:lorena.espejo@fastmoda.com.co?subject=' + subject + '&body=' + body;
+  const openLinks = files.map(file =>
+    '<a class="primary" href="' + esc(file.url) + '" target="_blank" rel="noopener noreferrer">Abrir troquel en Drive ↗</a>'
+  ).join('');
+
+  return '<p class="muted">Solicita acceso a Lorena Espejo desde el correo que registraste. Cuando ella te autorice, abre el archivo en Drive con ese mismo correo.</p>' +
+    '<div class="fileActions"><a class="primary" href="' + esc(requestUrl) +
+    '">Solicitar acceso a Lorena</a>' + openLinks + '</div>';
 }
+
 function attachments(p) {
   return '<section class="attachments"><div><p class="eyebrow">ARCHIVOS PARA PRODUCIR</p>' +
     '<h3>Línea de troquel y plano</h3></div>' + troquelActions(p) +
