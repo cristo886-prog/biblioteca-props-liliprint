@@ -160,3 +160,46 @@
   .manualPortal #detail .tabs button { padding-inline: 10px; }
   .manualPortal #detail .replacementFormLink { width: 100%; }
 }
+
+/* Recomendaciones de uso y almacenamiento en las fichas. */
+.manualPortal #detail .care {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.manualPortal #detail .care > section {
+  min-width: 0;
+  padding: clamp(16px, 2.4vw, 24px);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.manualPortal #detail .care h3 {
+  margin: 0 0 14px;
+  font-size: 19px;
+}
+.manualPortal #detail .careText {
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+.manualPortal #detail .careText p,
+.manualPortal #detail .careText ul {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  white-space: normal;
+}
+.manualPortal #detail .careText ul {
+  padding-inline-start: 1.2em;
+  list-style: disc;
+}
+.manualPortal #detail .careText > * + *,
+.manualPortal #detail .careText li + li {
+  margin-block-start: .65em;
+}
+@media (max-width: 650px) {
+  .manualPortal #detail .care { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+}
