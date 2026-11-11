@@ -203,3 +203,166 @@
 @media (max-width: 650px) {
   .manualPortal #detail .care { grid-template-columns: minmax(0, 1fr); gap: 12px; }
 }
+
+/* Solicitudes y procedimientos disponibles desde la portada. */
+.manualPortal .homeRequests {
+  margin: 36px 0 48px;
+}
+.manualPortal .homeReplacement {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid #e7d7df;
+  border-inline-start: 4px solid #8b3f67;
+  border-radius: 12px;
+  background: #fcf9fb;
+}
+.manualPortal .homeReplacement h2,
+.manualPortal .procedureIntro h2 {
+  margin: 0 0 10px;
+  font: 700 clamp(23px, 3vw, 30px)/1.25 Manrope, Arial, sans-serif;
+  letter-spacing: -.025em;
+}
+.manualPortal .homeRequests p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+.manualPortal .homeRequests .vmEyebrow {
+  margin: 0 0 10px;
+  font-size: 12px;
+}
+.manualPortal .homeReplacement > div > p:not(.vmEyebrow) {
+  max-width: 64ch;
+  color: var(--muted);
+}
+.manualPortal .homeReplacement .replacementFormLink {
+  gap: 12px;
+  min-height: 58px;
+  margin: 0;
+  padding: 12px 18px;
+  background: #8b3f67;
+  text-align: left;
+}
+.manualPortal .homeReplacement .replacementFormLink:hover { background: #713052; }
+.manualPortal .homeReplacement .detailIcon {
+  width: 29px;
+  height: 29px;
+  flex-shrink: 0;
+}
+.manualPortal .homeReplacementAction .muted {
+  margin-top: 8px;
+  font-size: 13px;
+  text-align: center;
+}
+.manualPortal .procedureIntro { margin: 38px 0 20px; }
+.manualPortal .procedureIntro > p:last-child { color: var(--muted); }
+.manualPortal .procedureChoices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 20px;
+}
+.manualPortal .procedureCard {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+.manualPortal .procedureCard > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 24px;
+  cursor: pointer;
+  list-style: none;
+}
+.manualPortal .procedureCard > summary::-webkit-details-marker { display: none; }
+.manualPortal .procedureCard > summary:focus-visible { outline: 3px solid #8b3f67; outline-offset: 3px; border-radius: 12px; }
+.manualPortal .procedureSummaryCopy { display: grid; gap: 8px; }
+.manualPortal .procedureSummaryCopy > strong {
+  font-size: 21px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.manualPortal .procedureSummaryCopy > span {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.manualPortal .procedureToggle {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #f5edf1;
+  color: #8b3f67;
+  font-size: 24px;
+  transition: transform .15s;
+}
+.manualPortal .procedureCard[open] .procedureToggle { transform: rotate(45deg); }
+.manualPortal .procedureBody {
+  padding: 0 24px 24px;
+  overflow-wrap: anywhere;
+}
+.manualPortal .procedureBody h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  line-height: 1.35;
+}
+.manualPortal .procedureOwner {
+  padding: 16px;
+  border-radius: 8px;
+  background: #f8f3f6;
+}
+.manualPortal .procedureOwner > strong { color: #713052; }
+.manualPortal .procedureBody p + p { margin-top: 8px; }
+.manualPortal .procedureSteps {
+  margin: 24px 0;
+  padding-inline-start: 24px;
+}
+.manualPortal .procedureSteps > li { padding: 0 0 20px 6px; }
+.manualPortal .procedureSteps > li + li { padding-top: 20px; border-top: 1px solid var(--line); }
+.manualPortal .procedureSteps > li:last-child { padding-bottom: 0; }
+.manualPortal .procedureSteps > li::marker { color: #8b3f67; font-weight: 700; }
+.manualPortal .procedureSteps .procedureTime {
+  margin-bottom: 10px;
+  color: #713052;
+  font-size: 14px;
+}
+.manualPortal .procedureBody .procedureDirective,
+.manualPortal .procedureBody .procedurePending {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-inline-start: 3px solid #c2a5b5;
+  background: #faf7f9;
+  font-size: 14px;
+}
+.manualPortal .procedureBody .procedureSource {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.manualPortal .procedureChecklist {
+  padding-inline-start: 22px;
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.manualPortal .procedureChecklist li + li { margin-top: 8px; }
+@media (max-width: 760px) {
+  .manualPortal .homeReplacement,
+  .manualPortal .procedureChoices { grid-template-columns: minmax(0, 1fr); }
+  .manualPortal .homeReplacement { gap: 20px; }
+  .manualPortal .homeReplacement .replacementFormLink { width: 100%; }
+  .manualPortal .procedureCard > summary { padding: 20px; }
+  .manualPortal .procedureBody { padding: 0 20px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .manualPortal .procedureToggle { transition: none; }
+}
