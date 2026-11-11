@@ -34,14 +34,14 @@ function troquelActions(p) {
   );
   const requestUrl = 'mailto:lorena.espejo@fastmoda.com.co?subject=' + subject + '&body=' + body;
 
-  return '<p class="muted">Envía la solicitud desde tu correo registrado. Si LiliPrint aprueba la solicitud, recibirás por correo el enlace al archivo y podrás abrirlo con la cuenta autorizada.</p>' +
+  return '<p class="muted">Apartado exclusivo para proveedores autorizados que requieren líneas de troquel y planos para producción. Envía la solicitud desde tu correo registrado. LiliPrint revisará tu solicitud y, cuando la apruebe, recibirás por correo el enlace al archivo para abrirlo con la cuenta autorizada.</p>' +
     '<div class="fileActions"><a class="primary" href="' + esc(requestUrl) +
     '">Solicitud de acceso</a></div>';
 }
 
 function attachments(p) {
-  return '<section class="attachments"><div><p class="eyebrow">ARCHIVOS PARA PRODUCIR</p>' +
-    '<h3>Línea de troquel y plano</h3></div>' + troquelActions(p) +
+  return '<section class="attachments"><div><p class="eyebrow">USO EXCLUSIVO PARA PROVEEDORES</p>' +
+    '<h3>Línea de troquel y plano para proveedores</h3></div>' + troquelActions(p) +
     '<p class="fileHint">Antes de fabricar, verifica código, medidas, escala y versión del plano.</p></section>';
 }
 
